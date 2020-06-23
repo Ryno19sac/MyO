@@ -1,0 +1,2 @@
+class Ritual < ApplicationRecord
+end
