@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_165927) do
+ActiveRecord::Schema.define(version: 2020_06_25_214147) do
+
+  create_table "birthdays", force: :cascade do |t|
+    t.date "current_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "journals", force: :cascade do |t|
     t.string "entry"
     t.integer "user_id"
+    t.string "entryDate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_journals_on_user_id"
@@ -29,8 +36,9 @@ ActiveRecord::Schema.define(version: 2020_06_23_165927) do
   end
 
   create_table "rituals", force: :cascade do |t|
-    t.date "current_date"
+    t.string "ritualTitle"
     t.boolean "is_done_for_the_day"
+    t.boolean "editing", default: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,8 +46,9 @@ ActiveRecord::Schema.define(version: 2020_06_23_165927) do
   end
 
   create_table "todos", force: :cascade do |t|
-    t.string "todo"
+    t.string "title"
     t.boolean "is_completed", default: false
+    t.boolean "editing", default: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

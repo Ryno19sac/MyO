@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Todo.destroy_all
+Ritual.destroy_all
+User.destroy_all
+
+User.create(username: 'ryan', password: 'ryan')
+
+Todo.create(title: 'Go Home', is_completed: false, editing: false, user_id: 1 )
