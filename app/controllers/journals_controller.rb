@@ -17,6 +17,17 @@ class JournalsController < ApplicationController
             user_id: @user.id,
             entryDate: params[:entryDate],
         )
+        render json: @journal
+    end
+
+    def destroy
+        @journal = Journal.find_by(params[:id])
+        
+        if @journal.destroy
+            render status: :no_content
+        else
+            render status: :unprocessable_entity
+        end
     end
 
     
